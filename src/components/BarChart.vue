@@ -3,12 +3,12 @@
   <h2 id="basic-bar" class="text-center text-lg text-gray-500 p-5">
     <a href="#basic-bar">基本</a>
   </h2>
-  <v-chart class="chart" :option="option1" />
+  <v-chart class="h-96" :option="option1" />
 
   <h2 id="normal-bar" class="text-center text-lg text-gray-500 p-5">
     <a href="#normal-bar">随机正态分布</a>
   </h2>
-  <v-chart class="chart" :option="option2" @zr:click="handleZrClick" />
+  <v-chart class="h-96" :option="option2" @zr:click="handleZrClick" />
 </template>
 
 <script lang="ts">
@@ -129,9 +129,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped>
-.chart {
-  height: 400px;
-}
-</style>
