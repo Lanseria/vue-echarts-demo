@@ -1,8 +1,13 @@
 <template>
-  <h2 id="bar" class="text-center text-lg text-gray-600 p-5">
-    <a href="#bar">Bar chart (with async data & custom theme)</a>
+  <h1 class="text-center text-xl text-gray-700">Bar Chart</h1>
+  <h2 id="basic-bar" class="text-center text-lg text-gray-500 p-5">
+    <a href="#basic-bar">基本</a>
   </h2>
   <v-chart class="chart" :option="option1" />
+
+  <h2 id="normal-bar" class="text-center text-lg text-gray-500 p-5">
+    <a href="#normal-bar">随机正态分布</a>
+  </h2>
   <v-chart class="chart" :option="option2" @zr:click="handleZrClick" />
 </template>
 
@@ -46,7 +51,13 @@ export default defineComponent({
       handleZrClick,
       option1: {
         legend: {},
-        tooltip: {},
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            // Use axis to trigger tooltip
+            type: "shadow", // 'shadow' as default; can also be 'line' or 'shadow'
+          },
+        },
         dataset: {
           // 用 dimensions 指定了维度的顺序。直角坐标系中，
           // 默认把第一个维度映射到 X 轴上，第二个维度映射到 Y 轴上。
@@ -75,9 +86,43 @@ export default defineComponent({
             },
           ],
         },
-        xAxis: { type: "category" },
-        yAxis: {},
-        series: [{ type: "bar" }, { type: "bar" }, { type: "bar" }],
+        xAxis: {},
+        yAxis: { type: "category" },
+        series: [
+          {
+            type: "bar",
+            showBackground: true,
+            stack: "year",
+            label: {
+              show: true,
+            },
+            emphasis: {
+              focus: "series",
+            },
+          },
+          {
+            type: "bar",
+            showBackground: true,
+            stack: "year",
+            label: {
+              show: true,
+            },
+            emphasis: {
+              focus: "series",
+            },
+          },
+          {
+            type: "bar",
+            showBackground: true,
+            stack: "year",
+            label: {
+              show: true,
+            },
+            emphasis: {
+              focus: "series",
+            },
+          },
+        ],
       },
       option2,
     };
